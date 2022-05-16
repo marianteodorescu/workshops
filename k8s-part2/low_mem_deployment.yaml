@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: low-mem
+  labels:
+    app: low-mem
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: low-mem
+  template:
+    metadata:
+      labels:
+        app: low-mem
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:1.14.2
+          env:
+            - name: NGINX_PORT
+              value: "80"
+          ports:
+            - containerPort: 80
+          resources:
+            limits:
+              memory: 6.7M
+              cpu: 20m
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: low-mem-service
+spec:
+  selector:
+    app: low-mem
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80

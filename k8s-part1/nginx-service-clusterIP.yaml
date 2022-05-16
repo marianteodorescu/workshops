@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: nginx-service
 spec:
-  # type: ClusterIP
+  type: ClusterIP
   selector:
     app: nginx
   ports:
