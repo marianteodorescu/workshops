@@ -1,0 +1,26 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: low-mem-job
+spec:
+  template:
+    spec:
+      containers:
+        - env:
+            - name: NGINX_PORT
+              value: "80"
+          image: nginx:1.14.2
+          command:
+            - sleep
+            - "3600"
+          imagePullPolicy: IfNotPresent
+          name: nginx
+          ports:
+            - containerPort: 80
+              protocol: TCP
+          resources:
+            limits:
+              cpu: 20m
+              memory: 100M
+      restartPolicy: Never
+  backoffLimit: 4

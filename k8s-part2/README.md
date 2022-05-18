@@ -75,6 +75,16 @@ Perform scheduled actions (backups, reports, emails etc).
 - Connect to a pod `kubectl exec -it <pod_name> -- bash`. You can now run commands in that pod: list env variables (`env`), run a script etc.
 - Run directly a command `kubectl exec -it <pod_name> -- /bin/sh -c "echo test"`
 
+## Jobs
+
+[DOCS](https://kubernetes.io/docs/concepts/workloads/controllers/job/)
+Used for one off jobs. It creates one or more Pods and will continue to retry execution of the Pods until a specified number of them successfully terminates.
+Also useful to run specific commands which need more resources than a normal pod created by your deployment.
+
+- Run `kubectl apply -f job.yaml`. It has a `sleep 3600` command which allows us to connect to the pod and run what we need inside it.
+- Connect to the pod created by the job
+- !!! Always clean-up after you have run jobs. `kubectl delete job low-mem-job`
+
 ## Using labels for grouping and interrogating resources
 
 [DOCS](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/)
@@ -92,7 +102,7 @@ Used for grouping/identifying/querying related resources in an organization.
 - Contexts are used to store connection details to a kubernetes cluster.
 - View current context: `kubectl config current-context`
 - View all contexts: `kubectl config get-contexts`
-- Switch context: `kubeclt use-context docker-desktop`
+- Switch context: `kubectl config use-context docker-desktop`
 
 ## Namespaces
 
