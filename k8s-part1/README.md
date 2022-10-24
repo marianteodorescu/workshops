@@ -73,7 +73,7 @@ Manages external access to services in the cluster. Handle hosts, SSL, load bala
 
 - Modify our service to use type=ClusterIP (exposed only in the cluster): `kubectl apply -f nginx-service-clusterIP.yaml`
 - Create the ingress for our service: `kubectl apply -f nginx-ingress.yaml`
-- Get the ingress: `k get ingress nginx-ingress`
+- Get the ingress: `kubectl get ingress nginx-ingress`
 - Access http://localhost - you should see the nginx home page
 
 ### References
