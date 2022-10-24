@@ -39,7 +39,7 @@ The worker node(s) host the [Pods](https://kubernetes.io/docs/concepts/workloads
 - Create the deployment: `kubectl apply -f nginx-deployment.yaml`
 - Check if deployment was created: `kubectl get deployments`
 - Check rollout status: `kubectl rollout status deployment/nginx-deployment`
-- Check if deployment again: `kubectl get deployments`
+- Check again if deployment was created: `kubectl get deployments`
 - Get ReplicaSet: `kubectl get rs`
 - Get the pods: `kubectl get pods --show-labels`
 - Update the image in the deployment: `kubectl set image deployment/nginx-deployment nginx=nginx:1.16.1` - or edit the version of the image in the yaml file and apply it again
